@@ -1,0 +1,35 @@
+.ag-theme-material {
+    margin-left: auto;
+    margin-right:auto;
+    width:100%;
+    height: 670px;
+  }
+.ag {
+    overflow: scroll;
+
+}
+button {
+    background-color:rgb(14, 27, 43);
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.button {
+    color: rgb(190, 209, 15);
+}
+  
+
+@media screen and (max-width:1089px){
+    .ag-theme-material {
+      width:100%;
+    }
+  }
+  
+  @media screen and (min-width:2000px) and (max-width:2200px){
+    .ag-theme-material {
+      width:68%;
+      height: 1200px;
+    }
+  }

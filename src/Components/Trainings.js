@@ -3,6 +3,8 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import '../App.css';
+import swal from 'sweetalert';
+import { RiDeleteBinLine } from "react-icons/ri";
 
 export default function Trainings() {
    const gridRef = useRef();
@@ -17,21 +19,49 @@ export default function Trainings() {
       .catch(err => console.error(err))
    }
 
+   const delTraining = (value) => {
+      swal({
+         title: "Are you sure?",
+         text: "Once deleted, you will not be able to recover this training session!",
+         icon: "warning",
+         buttons: true,
+         dangerMode: true,
+       })
+       .then((willDelete) => {
+         if (willDelete) {
+           swal("Training session has been deleted", {
+             icon: "success",
+           });
+           fetch('https://customerrest.herokuapp.com/api/trainings/' + value, {method: 'DELETE'})
+           .then(response => fetchTrainings())
+           .catch(err => console.error(err))
+           console.log(value);
+         } else {
+           swal("Training session has not been deleted!");
+         }
+       });
+   }
+
    const columns = [
 
-      {headerName:'', field: 'id', width: 130, sortable: true, filter: true},
+      {headerName:'', field: 'id', sortable: true, filter: true, maxWidth: 90},
       {field: 'date', sortable: true, filter: true, cellRenderer: (data) => {
         return data.value ? (new Date(data.value)).toLocaleDateString() : '';
    }},
-      {field: 'duration', sortable: true, filter: true},
+      {field: 'duration', sortable: true, filter: true, width: 110},
       {field: 'activity', sortable: true, filter: true},
       {headerName: 'Firstname', field: 'customer.firstname', sortable: true, filter: true},
       {headerName: 'Lastname', field: 'customer.lastname', sortable: true, filter: true},
+      {headerName: '', field: 'id', maxWidth: 60, sortable: true, filter: true, cellRenderer: params => 
+      <button style={{margin: '10px'}} variant="outlined" className='del' onClick={() => delTraining(params.value)}>
+       <RiDeleteBinLine color="red" size={19}/>
+      </button>},
+
 
    ]
 
    return(
-      <div className="ag-theme-alpine" style={{height: '1100px', width: '100%', marginTop:'20px', marginLeft: 'auto', marginRight:'auto'}}>
+      <div className="ag-theme-alpine" style={{height: '1300px'}}>
       <AgGridReact
          centered
          ref={gridRef}

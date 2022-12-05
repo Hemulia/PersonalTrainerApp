@@ -1,7 +1,8 @@
-body {
-  background-color: white;
-
+*{
+  justify-content: center;
+  text-align: center;
 }
+
 .header {
   height: 50px;
 }
@@ -9,4 +10,30 @@ body {
 .ag-row .ag-cell {
   justify-content: center; /* align horizontal */
   align-items: center;
+}
+
+.plus, .del, .edit{
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.ag-theme-alpine {
+  width:73%;
+  margin-top:57px;
+  margin-left: auto;
+  margin-right:auto;
+  overflow: scroll;
+}
+
+
+@media screen and (max-width:1289px){
+  .ag-theme-alpine {
+    width:100%;
+  }
+}
+
+@media screen and (min-width:1700px) and (max-width:2200px){
+  .ag-theme-alpine {
+    width:50%;
+  }
 }
