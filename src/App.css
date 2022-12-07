@@ -25,6 +25,11 @@
   overflow: scroll;
 }
 
+.cal {
+  background-color: white;
+  color: rgb(28, 28, 40);
+}
+
 
 @media screen and (max-width:1289px){
   .ag-theme-alpine {

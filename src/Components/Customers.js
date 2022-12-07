@@ -1,4 +1,4 @@
-import React, { useState, useEffect,  useRef } from 'react';
+import React, { useState, useEffect,  useRef, useCallback } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
@@ -81,6 +81,12 @@ export default function Customers() {
       .catch(err => console.error(err))
    }
 
+   const onExportClick = useCallback(() => {
+      gridRef.current.api.exportDataAsCsv();
+   }, []); 
+      
+   
+
 
    const columns = [
     {field: 'firstname', headerName:'First Name', sortable: true, filter: true,width:160 },
@@ -108,6 +114,9 @@ export default function Customers() {
    return(
       <div className="ag-theme-material" alt="custom">
          <button><AddCustomer saveCustomer={saveCustomer}/></button>
+         <button className='button' style={{margin: '10px'}} variant="outlined" onClick={onExportClick}>
+            Export
+         </button>
          <AgGridReact
             className='ag'
             centered

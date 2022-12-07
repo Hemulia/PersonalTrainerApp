@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
@@ -42,6 +42,10 @@ export default function Trainings() {
        });
    }
 
+   const onExportClick = useCallback(() => {
+      gridRef.current.api.exportDataAsCsv();
+   }, []);
+
    const columns = [
 
       {headerName:'', field: 'id', sortable: true, filter: true, maxWidth: 90},
@@ -62,13 +66,17 @@ export default function Trainings() {
 
    return(
       <div className="ag-theme-alpine" style={{height: '1300px'}}>
-      <AgGridReact
-         centered
-         ref={gridRef}
-         rowSelection='single'
-         columnDefs={columns}
-         rowData={trainings}>
-      </AgGridReact>
+
+         <button className='button'  style={{margin: '10px'}} variant="outlined" onClick={onExportClick}>
+            Export
+         </button>
+         <AgGridReact
+            centered
+            ref={gridRef}
+            rowSelection='single'
+            columnDefs={columns}
+            rowData={trainings}>
+         </AgGridReact>
    </div>
    );
 }
