@@ -65,12 +65,12 @@ export default function Trainings() {
    ]
 
    return(
-      <div className="ag-theme-alpine" style={{height: '1300px'}}>
-
+      <div style={{height: '1300px'}}>
          <button className='button'  style={{margin: '10px'}} variant="outlined" onClick={onExportClick}>
             Export
          </button>
          <AgGridReact
+            className="ag-theme-alpine"
             centered
             ref={gridRef}
             rowSelection='single'
