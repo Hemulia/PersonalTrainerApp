@@ -37,7 +37,7 @@ export default function Chart() {
       <BarChart className="chart"width={930} height={300} data={newData} >
          <CartesianGrid />
          <XAxis dataKey="activity" />
-         <YAxis label={{fontColor :'white', value: 'Kesto (min)', position: 'insideLeft', angle: 90}}/>
+         <YAxis label={{fontColor :'white', value: 'Duration (min)', position: 'insideLeft', angle: 90}}/>
          <Bar dataKey="total" fill="rgb(190, 209, 15)" />
       </BarChart>
       </div>
