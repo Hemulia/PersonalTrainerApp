@@ -2,6 +2,7 @@ import './App.css';
 import Customers from './Components/Customers';
 import Trainings from './Components/Trainings';
 import TrainingCal from './Components/Calendar';
+import Chart from './Components/Chart';
 import React, { useState } from 'react';
 import { Toolbar, Tab, Tabs, AppBar } from '@mui/material';
 import { ThemeProvider, createTheme} from '@mui/material/styles';
@@ -35,10 +36,12 @@ function App() {
             <Tab value="one" label="Customers" style={{color:"white"}}/>
             <Tab value="two" label="Trainings" style={{color:"white"}}/>
             <Tab value="three" label="Calendar" style={{color:"white"}} />
+            <Tab value="four" label="Statistics" style={{color:"white"}} />
           </Tabs>
             {value === 'one' && <div><Customers/></div>}
             {value === 'two' && <div><Trainings/></div>}
             {value === 'three' && <div><TrainingCal/></div>}
+            {value === 'four' && <div><Chart/></div>}
             </AppBar>
           </ThemeProvider>
     </div>

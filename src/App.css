@@ -27,7 +27,23 @@
 
 .cal {
   background-color: white;
-  color: rgb(28, 28, 40);
+  color: rgb(28, 33, 55);
+  padding: 50px;
+}
+
+.chart {
+  background-color:rgb(16, 33, 52);
+  color: rgb(255, 255, 255);
+  margin-top:100px;
+  margin-left: auto;
+  margin-right:auto;
+  padding: 50px;
+
+}
+
+.chartdiv {
+  margin-top: 50px;
+  padding-bottom: 500px;
 }
 
 
